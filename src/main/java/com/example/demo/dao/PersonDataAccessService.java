@@ -20,7 +20,9 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int insertPerson(UUID id, Person person) {
-        return 0;
+        String sql="INSERT INTO PERSON VALUES(uuid_generate_v4(), ?)";
+
+        return jdbcTemplate.update(sql,person.getName());
     }
 
     @Override
@@ -49,11 +51,13 @@ public class PersonDataAccessService implements PersonDao {
 
     @Override
     public int deletePersonById(UUID id) {
-        return 0;
+        String sql = "DELETE FROM PERSON WHERE ID = ?";
+        return jdbcTemplate.update(sql,id);
     }
 
     @Override
     public int updatePersonById(UUID id, Person person) {
-        return 0;
+        String sql = "UPDATE PERSON SET ID = ?, NAME = ?";
+        return jdbcTemplate.update(sql,id,person.getName());
     }
 }
