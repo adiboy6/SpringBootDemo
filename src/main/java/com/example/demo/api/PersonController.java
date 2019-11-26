@@ -21,6 +21,11 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @RequestMapping(value = {"","/"})
+    public String default_page(){
+        return "Hello World";
+    }
+
     @PostMapping
     public void addPerson(@Valid @NotNull @RequestBody Person person){
         personService.addPerson(person);
