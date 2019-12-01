@@ -8,6 +8,8 @@ services:
       - postgres-db
   postgres-db:
     image: postgres:alpine
+    volumes:
+      - ./scripts/:/tmp
     ports:
       - 5431:5432
     environment:
