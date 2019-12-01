@@ -1,0 +1,16 @@
+version : "3"
+services:
+  student:
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres-db
+  postgres-db:
+    image: postgres:alpine
+    ports:
+      - 5431:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=demodb
